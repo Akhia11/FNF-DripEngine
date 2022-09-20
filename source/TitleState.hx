@@ -305,12 +305,11 @@ class TitleState extends MusicBeatState
 					trace('cur ver');
 					trace(NGio.GAME_VER_NUMS.trim());
 				}
-                                #end
 				else
 				{
 					FlxG.switchState(new MainMenuState());
 				}
-                                
+                                #end
 			});
 			// FlxG.sound.play(Paths.music('titleShoot'), 0.7);
 		}
