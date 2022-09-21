@@ -61,7 +61,6 @@ class FreeplayState extends MusicBeatState
 
 				songs.push(new SongMetadata(song, week, icon, diffs, actualColor));
 		}
-	}
 	
 	//credits to leather engine augh
 
