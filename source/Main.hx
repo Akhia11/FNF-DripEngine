@@ -29,7 +29,7 @@ class Main extends Sprite
 	{
 		super();
 
-                SUtill.check();
+                SUtil.check();
 
 		if (stage != null)
 		{
