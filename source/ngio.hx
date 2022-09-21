@@ -1,5 +1,6 @@
 package;
 
+#if desktop 
 import flixel.FlxG;
 import flixel.util.FlxSignal;
 import flixel.util.FlxTimer;
@@ -13,6 +14,7 @@ import io.newgrounds.objects.events.Result.GetCurrentVersionResult;
 import io.newgrounds.objects.events.Result.GetVersionResult;
 import lime.app.Application;
 import openfl.display.Stage;
+#end
 
 using StringTools;
 

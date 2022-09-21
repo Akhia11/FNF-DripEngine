@@ -24,7 +24,9 @@ import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
+#if desktop 
 import io.newgrounds.NG;
+#end
 import lime.app.Application;
 import openfl.Assets;
 
@@ -58,9 +60,11 @@ class TitleState extends MusicBeatState
 
 		super.create();
 
+                #if desktop 
 		NGio.noLogin(APIStuff.API);
+                #end
 
-		#if ng
+		#if desktop 
 		var ng:NGio = new NGio(APIStuff.API, APIStuff.EncKey);
 		trace('NEWGROUNDS LOL');
 		#end
@@ -270,7 +274,7 @@ class TitleState extends MusicBeatState
 
 		if (pressedEnter && !transitioning && skippedIntro)
 		{
-			#if !switch
+			#if desktop 
 			NGio.unlockMedal(60960);
 
 			// If it's Friday according to da clock
@@ -285,27 +289,7 @@ class TitleState extends MusicBeatState
 
 			transitioning = true;
 			// FlxG.sound.music.stop();
-
-			new FlxTimer().start(2, function(tmr:FlxTimer)
-			{
-				// Check if version is outdated
-
-				var version:String = "v" + Application.current.meta.get('version');
-
-				if (version.trim() != NGio.GAME_VER_NUMS.trim() && !OutdatedSubState.leftState)
-				{
-					FlxG.switchState(new OutdatedSubState());
-					trace('OLD VERSION!');
-					trace('old ver');
-					trace(version.trim());
-					trace('cur ver');
-					trace(NGio.GAME_VER_NUMS.trim());
-				}
-				else
-				{
-					FlxG.switchState(new MainMenuState());
-				}
-			});
+			    FlxG.switchState(new MainMenuState());
 			// FlxG.sound.play(Paths.music('titleShoot'), 0.7);
 		}
 
