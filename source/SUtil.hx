@@ -41,7 +41,7 @@ class SUtil
 				/**
 				 * Basically for now i can't force the app to stop while its requesting a android permission, so this makes the app to stop while its requesting the specific permission
 				 */
-				Lib.application.window.alert('hey! drip Engine has android permissions if you accepted them you are good+ "\nIf you didn't then expect a crash"
+				Lib.application.window.alert('hey! drip Engine has android permissions if you accepted them you are good + "\nIf you didn't then expect a crash"
 					+ 'Press Ok to see what happens',
 					'Permissions?');
 			}
