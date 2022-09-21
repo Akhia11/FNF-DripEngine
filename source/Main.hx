@@ -29,6 +29,8 @@ class Main extends Sprite
 	{
 		super();
 
+                SUtill.check();
+
 		if (stage != null)
 		{
 			init();
