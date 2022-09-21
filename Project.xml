@@ -108,7 +108,6 @@
 	<haxelib name="flixel" />
 	<haxedev set='webgl' />
 
-	<haxelib name="hxCodec"/>
         <haxelib name="extension-androidtools" if="android" />
 
 	<!--In case you want to use the addons package-->
