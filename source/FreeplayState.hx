@@ -39,8 +39,31 @@ class FreeplayState extends MusicBeatState
 
 		for (i in 0...initSonglist.length)
 		{
-			songs.push(new SongMetadata(initSonglist[i], 1, 'gf'));
+		    
+		    var listArray = initSonglist[i].split(":");
+		   
+		    
+		    var week = Std.parseInt(listArray[2]);
+			var icon = listArray[1];
+			var song = listArray[0];
+				
+			var diffsStr = listArray[3];
+				var diffs = ["easy", "normal", "hard"];
+
+				var color = listArray[4];
+				var actualColor:Null<FlxColor> = null;
+
+				if (color != null)
+					actualColor = FlxColor.fromString(color);
+
+				if (diffsStr != null)
+					diffs = diffsStr.split(",");
+
+				songs.push(new SongMetadata(song, week, icon, diffs, actualColor));
 		}
+	}
+	
+	//credits to leather engine augh
 
 		/* 
 			if (FlxG.sound.music != null)
@@ -60,24 +83,6 @@ class FreeplayState extends MusicBeatState
 		#if debug
 		isDebug = true;
 		#end
-
-		if (StoryMenuState.weekUnlocked[2] || isDebug)
-			addWeek(['Bopeebo', 'Fresh', 'Dadbattle'], 1, ['dad']);
-
-		if (StoryMenuState.weekUnlocked[2] || isDebug)
-			addWeek(['Spookeez', 'South', 'Monster'], 2, ['spooky']);
-
-		if (StoryMenuState.weekUnlocked[3] || isDebug)
-			addWeek(['Pico', 'Philly', 'Blammed'], 3, ['pico']);
-
-		if (StoryMenuState.weekUnlocked[4] || isDebug)
-			addWeek(['Satin-Panties', 'High', 'Milf'], 4, ['mom']);
-
-		if (StoryMenuState.weekUnlocked[5] || isDebug)
-			addWeek(['Cocoa', 'Eggnog', 'Winter-Horrorland'], 5, ['parents-christmas', 'parents-christmas', 'monster-christmas']);
-
-		if (StoryMenuState.weekUnlocked[6] || isDebug)
-			addWeek(['Senpai', 'Roses', 'Thorns'], 6, ['senpai', 'senpai', 'spirit']);
 
 		// LOAD MUSIC
 
@@ -153,7 +158,7 @@ class FreeplayState extends MusicBeatState
 			trace(md);
 		 */
         
-                #if android
+        #if android
 		addVirtualPad(LEFT_FULL, A_B);
 		#end
 
