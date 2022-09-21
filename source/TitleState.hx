@@ -398,7 +398,7 @@ class TitleState extends MusicBeatState
 
 			case 16:
 				addMoreText('Drip Engine');
-                        case 17;
+                        case 17:
                                 skipIntro();
 
                         
