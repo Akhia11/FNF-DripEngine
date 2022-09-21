@@ -14,6 +14,11 @@ IF YOU MAKE A MOD AND DISTRIBUTE A MODIFIED / RECOMPILED VERSION, YOU MUST OPEN 
 - [PhantomArcade3K](https://twitter.com/phantomarcade3k) and [Evilsk8r](https://twitter.com/evilsk8r) - Art
 - [Kawaisprite](https://twitter.com/kawaisprite) - Musician
 
+## Drip Engine Credits
+
+- [Akhia11](https://m.youtube.com/channel/UCP6bSvVRWMTQBMXBJGb9SVA) - Creator
+- [mcagabe19](https://m.youtube.com/c/Mcagabe19) - Helper
+
 This game was made with love to Newgrounds and its community. Extra love to Tom Fulp.
 
 ## Build instructions
