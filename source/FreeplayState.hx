@@ -10,7 +10,6 @@ import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import lime.utils.Assets;
 
-
 #if windows
 import Discord.DiscordClient;
 #end
@@ -34,7 +33,8 @@ class FreeplayState extends MusicBeatState
 	private var curPlaying:Bool = false;
 
 	private var iconArray:Array<HealthIcon> = [];
-	
+
+        public static var songData:Map<String, Array<SongData>> = [];
 	
 	public static function loadDiff(diff:Int, songId:String, array:Array<SongData>)
 	{
