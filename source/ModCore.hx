@@ -9,8 +9,10 @@ import polymod.backends.PolymodAssets.PolymodAssetType;
 import polymod.format.ParseRules;
 #end
 
-
- //credits: KadeDev Augh
+/**
+ * Class based from Kade Engine.
+ * Credits: KadeDev.
+ */
 class ModCore
 {
 	private static final API_VER:String = '1.0.0';
