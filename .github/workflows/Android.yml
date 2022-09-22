@@ -53,7 +53,7 @@ jobs:
           haxelib --never install flixel 4.9.0 --quiet
           haxelib install flixel-tools 1.4.4 --quiet
           haxelib install flixel-ui 2.3.3 --quiet
-          haxelib install hscript 2.4.0 --quiet
+          haxelib install hscript 2.5.0 --quiet
           haxelib install flixel-addons 2.10.0 --quiet
           haxelib install flixel-demos 2.7.3 --quiet
           haxelib install flixel-templates 2.6.5 --quiet
