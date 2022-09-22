@@ -60,8 +60,6 @@ jobs:
           haxelib install polymod 1.6.0 --quiet
           haxelib git linc_luajit https://github.com/sirox228/linc_luajit.git
           haxelib git extension-androidtools https://github.com/91ebagacm/extension-androidtools.git
-          haxelib git hscript-ex https://github.com/ianharrigan/hscript-ex.git
-
       - name: Create Version Tag
         run: echo "${{github.run_id}}" > VERSION
 
