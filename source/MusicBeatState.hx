@@ -11,6 +11,7 @@ import flixel.util.FlxTimer;
 import android.AndroidControls;
 import android.flixel.FlxVirtualPad;
 import flixel.FlxCamera;
+import flixel.FlxState;
 import flixel.input.actions.FlxActionInput;
 import flixel.util.FlxDestroyUtil;
 #end
