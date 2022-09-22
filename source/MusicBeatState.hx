@@ -6,7 +6,7 @@ import flixel.addons.transition.FlxTransitionableState;
 import flixel.addons.ui.FlxUIState;
 import flixel.math.FlxRect;
 import flixel.util.FlxTimer;
-
+import flixel.util.FlxColor;
 #if android
 import android.AndroidControls;
 import android.flixel.FlxVirtualPad;
