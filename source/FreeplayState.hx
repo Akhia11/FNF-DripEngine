@@ -1,5 +1,8 @@
 package;
 
+#if desktop
+import Discord.DiscordClient;
+#end
 import flash.text.TextField;
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -9,11 +12,6 @@ import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import lime.utils.Assets;
-import Song.SongData
-
-#if windows
-import Discord.DiscordClient;
-#end
 
 using StringTools;
 
@@ -35,50 +33,13 @@ class FreeplayState extends MusicBeatState
 
 	private var iconArray:Array<HealthIcon> = [];
 
-        public static var songData:Map<String, Array<SongData>> = [];
-	
-	public static function loadDiff(diff:Int, songId:String, array:Array<SongData>)
-	{
-		var diffName:String = "";
-
-		switch (diff)
-		{
-			case 0:
-				diffName = "-easy";
-			case 2:
-				diffName = "-hard";
-		}
-
-		array.push(Song.conversionChecks(Song.loadFromJson(songId, diffName)));
-	}
-
 	override function create()
 	{
 		var initSonglist = CoolUtil.coolTextFile(Paths.txt('freeplaySonglist'));
 
 		for (i in 0...initSonglist.length)
 		{
-			var data:Array<String> = initSonglist[i].split(':');
-			var songId = data[0];
-			var meta = new FreeplaySongMetadata(songId, Std.parseInt(data[2]), data[1]);
-			var diffsThatExist = [];
-                        var songData = [];
-			diffsThatExist = ["Easy", "Normal", "Hard"];
-			
-			if (diffsThatExist.contains("Easy"))
-				FreeplayState.loadDiff(0, songId, diffs);
-			if (diffsThatExist.contains("Normal"))
-				FreeplayState.loadDiff(1, songId, diffs);
-			if (diffsThatExist.contains("Hard"))
-				FreeplayState.loadDiff(2, songId, diffs);
-				
-			meta.diffs = diffsThatExist;
-			
-			FreeplayState.songData.set(songId, diffs);
-			trace('loaded diffs for ' + songId);
-			FreeplayState.songs.push(meta);
-			
-			songs.push(new SongMetadata(data[0], Std.parseInt(data[2]), data[1]));
+			songs.push(new SongMetadata(initSonglist[i], 1, 'gf'));
 		}
 
 		/* 
@@ -89,16 +50,34 @@ class FreeplayState extends MusicBeatState
 			}
 		 */
 
-		 #if windows
-		 // Updating Discord Rich Presence
-		 DiscordClient.changePresence("In the Freeplay Menu", null);
-		 #end
+		#if desktop
+		// Updating Discord Rich Presence
+		DiscordClient.changePresence("In the Menus", null);
+		#end
 
 		var isDebug:Bool = false;
 
 		#if debug
 		isDebug = true;
 		#end
+
+		if (StoryMenuState.weekUnlocked[2] || isDebug)
+			addWeek(['Bopeebo', 'Fresh', 'Dadbattle'], 1, ['dad']);
+
+		if (StoryMenuState.weekUnlocked[2] || isDebug)
+			addWeek(['Spookeez', 'South', 'Monster'], 2, ['spooky']);
+
+		if (StoryMenuState.weekUnlocked[3] || isDebug)
+			addWeek(['Pico', 'Philly', 'Blammed'], 3, ['pico']);
+
+		if (StoryMenuState.weekUnlocked[4] || isDebug)
+			addWeek(['Satin-Panties', 'High', 'Milf'], 4, ['mom']);
+
+		if (StoryMenuState.weekUnlocked[5] || isDebug)
+			addWeek(['Cocoa', 'Eggnog', 'Winter-Horrorland'], 5, ['parents-christmas', 'parents-christmas', 'monster-christmas']);
+
+		if (StoryMenuState.weekUnlocked[6] || isDebug)
+			addWeek(['Senpai', 'Roses', 'Thorns'], 6, ['senpai', 'senpai', 'spirit']);
 
 		// LOAD MUSIC
 
@@ -173,7 +152,7 @@ class FreeplayState extends MusicBeatState
 
 			trace(md);
 		 */
-
+        
                 #if android
 		addVirtualPad(LEFT_FULL, A_B_C);
 		#end
@@ -249,6 +228,7 @@ class FreeplayState extends MusicBeatState
 			PlayState.SONG = Song.loadFromJson(poop, songs[curSelected].songName.toLowerCase());
 			PlayState.isStoryMode = false;
 			PlayState.storyDifficulty = curDifficulty;
+
 			PlayState.storyWeek = songs[curSelected].week;
 			trace('CUR WEEK' + PlayState.storyWeek);
 			LoadingState.loadAndSwitchState(new PlayState());
@@ -281,8 +261,8 @@ class FreeplayState extends MusicBeatState
 
 	function changeSelection(change:Int = 0)
 	{
-		#if !switch
-		// NGio.logEvent('Fresh');
+		#if desktop
+		NGio.logEvent('Fresh');
 		#end
 
 		// NGio.logEvent('Fresh');
@@ -302,12 +282,10 @@ class FreeplayState extends MusicBeatState
 		// lerpScore = 0;
 		#end
 
-		#if android
-                if (virtualPad.buttonC.justPressed)
+                if (#if android virtualPad.buttonC.justPressed || #end FlxG.keys.justPressed.SPACE)
                 {
 		FlxG.sound.playMusic(Paths.inst(songs[curSelected].songName), 0);
                 }
-		#end
 
 		var bullShit:Int = 0;
 
