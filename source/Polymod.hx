@@ -11,7 +11,7 @@ import polymod.format.ParseRules;
 
 
  //credits: KadeDev Augh
-class ModCore
+class polymod
 {
 	private static final API_VER:String = '1.0.0';
 	private static final MOD_DIR:String = 'mods';
