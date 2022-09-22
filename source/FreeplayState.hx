@@ -61,8 +61,6 @@ class FreeplayState extends MusicBeatState
 
 				songs.push(new SongMetadata(song, week, icon, diffs, actualColor));
 		}
-}
-	
 	//credits to leather engine augh
 
 		/* 
@@ -158,7 +156,7 @@ class FreeplayState extends MusicBeatState
 			trace(md);
 		 */
         
-        #if android
+                #if android
 		addVirtualPad(LEFT_FULL, A_B);
 		#end
 
