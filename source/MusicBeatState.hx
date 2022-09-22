@@ -180,4 +180,22 @@ class MusicBeatState extends FlxUIState
 	{
 		//do literally nothing dumbass
 	}
+        public static function switchState(nextState:FlxState)
+	{
+		if (!FlxTransitionableState.skipNextTransIn)
+		{
+			var cam:FlxCamera = new FlxCamera();
+			cam.bgColor.alpha = 0;
+			FlxG.cameras.add(cam, false);
+			cam.fade(FlxColor.BLACK, 0.7, false, function()
+			{
+				FlxG.switchState(nextState);
+				FlxTransitionableState.skipNextTransIn = false;
+			});
+		}
+		else
+		{
+			FlxG.switchState(nextState);
+		}
+	}
 }
