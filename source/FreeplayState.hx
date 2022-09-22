@@ -34,6 +34,21 @@ class FreeplayState extends MusicBeatState
 	private var curPlaying:Bool = false;
 
 	private var iconArray:Array<HealthIcon> = [];
+	
+	public static function loadDiff(diff:Int, songId:String, array:Array<SongData>)
+	{
+		var diffName:String = "";
+
+		switch (diff)
+		{
+			case 0:
+				diffName = "-easy";
+			case 2:
+				diffName = "-hard";
+		}
+
+		array.push(Song.conversionChecks(Song.loadFromJson(songId, diffName)));
+	}
 
 	override function create()
 	{
