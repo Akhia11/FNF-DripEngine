@@ -364,7 +364,7 @@ class TitleState extends MusicBeatState
 			// credTextShit.text = 'In association \nwith';
 			// credTextShit.screenCenter();
 			case 5:
-				createCoolText(['not association', 'with']);
+				createCoolText(['Not association', 'with']);
 			case 7:
 				addMoreText('newgrounds');
 				ngSpr.visible = true;
