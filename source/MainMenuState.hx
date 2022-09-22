@@ -27,11 +27,7 @@ class MainMenuState extends MusicBeatState
 
 	var menuItems:FlxTypedGroup<FlxSprite>;
 
-	//#if !switch
-	var optionShit:Array<String> = ['story mode', 'freeplay', 'donate', 'options'];
-	//#else
-	//var optionShit:Array<String> = ['story mode', 'freeplay'];
-	//#end
+	var optionShit:Array<String> = ['story mode', 'freeplay', 'donate', 'mods', 'options'];
 
         public static var balls:String = 'best engine';
 
@@ -184,6 +180,9 @@ class MainMenuState extends MusicBeatState
 									case 'story mode':
 										FlxG.switchState(new StoryMenuState());
 										trace("Story Menu Selected");
+                                                                        case 'mods':
+										FlxG.switchState(new ModsMenuState;
+										trace("Mods Menu Selected");
 									case 'freeplay':
 										FlxG.switchState(new FreeplayState());
 
