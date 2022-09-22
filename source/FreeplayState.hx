@@ -35,7 +35,6 @@ class FreeplayState extends MusicBeatState
 
 	private var iconArray:Array<HealthIcon> = [];
 	
-	songData = [];
 	
 	public static function loadDiff(diff:Int, songId:String, array:Array<SongData>)
 	{
@@ -62,6 +61,7 @@ class FreeplayState extends MusicBeatState
 			var songId = data[0];
 			var meta = new FreeplaySongMetadata(songId, Std.parseInt(data[2]), data[1]);
 			var diffsThatExist = [];
+                        var songData = [];
 			diffsThatExist = ["Easy", "Normal", "Hard"];
 			
 			if (diffsThatExist.contains("Easy"))
