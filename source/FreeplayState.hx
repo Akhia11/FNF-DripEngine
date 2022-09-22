@@ -35,6 +35,8 @@ class FreeplayState extends MusicBeatState
 
 	private var iconArray:Array<HealthIcon> = [];
 	
+	songData = [];
+	
 	public static function loadDiff(diff:Int, songId:String, array:Array<SongData>)
 	{
 		var diffName:String = "";
