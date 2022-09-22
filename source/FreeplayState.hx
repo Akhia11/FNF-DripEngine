@@ -61,20 +61,20 @@ class FreeplayState extends MusicBeatState
 
 				songs.push(new SongMetadata(song, week, icon, diffs, actualColor));
 		}
-	//credits to leather engine augh
+	        //credits to leather engine augh
 
-		/* 
+		#if desktop
+		// Updating Discord Rich Presence
+		DiscordClient.changePresence("In the Menus", null);
+		#end
+
+                /* 
 			if (FlxG.sound.music != null)
 			{
 				if (!FlxG.sound.music.playing)
 					FlxG.sound.playMusic(Paths.music('freakyMenu'));
 			}
 		 */
-
-		#if desktop
-		// Updating Discord Rich Presence
-		DiscordClient.changePresence("In the Menus", null);
-		#end
 
 		var isDebug:Bool = false;
 
