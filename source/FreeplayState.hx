@@ -37,31 +37,37 @@ class FreeplayState extends MusicBeatState
 	{
 		var initSonglist = CoolUtil.coolTextFile(Paths.txt('freeplaySonglist'));
 
+		// Loops through all songs in freeplaySonglist.txt
 		for (i in 0...initSonglist.length)
 		{
-		    
-		    var listArray = initSonglist[i].split(":");
-		   
-		    
-		    var week = Std.parseInt(listArray[2]);
-			var icon = listArray[1];
-			var song = listArray[0];
+			if(initSonglist[i].trim() != "")
+			{
+				// Creates an array of their strings
+				var listArray = initSonglist[i].split(":");
+
+				// Variables I like yes mmmm tasty
+				var week = Std.parseInt(listArray[2]);
+				var icon = listArray[1];
+				var song = listArray[0];
 				
-			var diffsStr = listArray[3];
+				var diffsStr = listArray[3];
 				var diffs = ["easy", "normal", "hard"];
 
 				var color = listArray[4];
 				var actualColor:Null<FlxColor> = null;
 
-				if (color != null)
+				if(color != null)
 					actualColor = FlxColor.fromString(color);
 
-				if (diffsStr != null)
+				if(diffsStr != null)
 					diffs = diffsStr.split(",");
 
+				// Creates new song data accordingly
 				songs.push(new SongMetadata(song, week, icon, diffs, actualColor));
+			}
 		}
-	        //credits to leather engine augh
+	        //Akhia11: credits to leather engine augh
+                //mcagabe19: when u forget smth add LOLOLOLOL
 
 		#if desktop
 		// Updating Discord Rich Presence
