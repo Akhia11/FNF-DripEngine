@@ -42,6 +42,24 @@ class FreeplayState extends MusicBeatState
 		for (i in 0...initSonglist.length)
 		{
 			var data:Array<String> = initSonglist[i].split(':');
+			var songId = data[0];
+			var meta = new FreeplaySongMetadata(songId, Std.parseInt(data[2]), data[1]);
+			var diffsThatExist = [];
+			diffsThatExist = ["Easy", "Normal", "Hard"];
+			
+			if (diffsThatExist.contains("Easy"))
+				FreeplayState.loadDiff(0, songId, diffs);
+			if (diffsThatExist.contains("Normal"))
+				FreeplayState.loadDiff(1, songId, diffs);
+			if (diffsThatExist.contains("Hard"))
+				FreeplayState.loadDiff(2, songId, diffs);
+				
+			meta.diffs = diffsThatExist;
+			
+			FreeplayState.songData.set(songId, diffs);
+			trace('loaded diffs for ' + songId);
+			FreeplayState.songs.push(meta);
+			
 			songs.push(new SongMetadata(data[0], Std.parseInt(data[2]), data[1]));
 		}
 
