@@ -114,6 +114,7 @@
 	<!--In case you want to use the addons package-->
 	<haxelib name="flixel-addons" />
 	<haxelib name="hscript" />
+        <haxelib name="hscript-ex" if="desktop"/>
 
 	<!--In case you want to use the ui package-->
 	<haxelib name="flixel-ui" />
@@ -133,30 +134,11 @@
 
 	<!-- ______________________________ Haxedefines _____________________________ -->
 
-	<!--Enable the Flixel core recording system-->
-	<!--<haxedef name="FLX_RECORD" />-->
+	<!--You will get fine error reporting at parsing time-->
+	<haxedef name="hscriptPos" />
 
-	<!--Disable the right and middle mouse buttons-->
-	<!-- <haxedef name="FLX_NO_MOUSE_ADVANCED" /> -->
-
-	<!--Disable the native cursor API on Flash-->
-	<!--<haxedef name="FLX_NO_NATIVE_CURSOR" />-->
-
-	<!--Optimise inputs, be careful you will get null errors if you don't use conditionals in your game-->
-	<!-- <haxedef name="FLX_NO_MOUSE" if="mobile" /> -->
-	<!-- <haxedef name="FLX_NO_KEYBOARD" if="mobile" /> -->
-	<!-- <haxedef name="FLX_NO_TOUCH" if="desktop" /> -->
-	<!--<haxedef name="FLX_NO_GAMEPAD" />-->
-
-	<!--Disable the Flixel core sound tray-->
-	<!--<haxedef name="FLX_NO_SOUND_TRAY" />-->
-
-	<!--Disable the Flixel sound management code-->
-	<!--<haxedef name="FLX_NO_SOUND_SYSTEM" />-->
-
-	<haxedef name="HXC_DEBUG_TRACE" if="debug" />
-
-	<haxedef name="HXCPP_GC_BIG_BLOCKS"/>
+	<!--No DCE is performed-->
+	<haxeflag name="-dce no" />
 
 	<!--Disable the Flixel core focus lost screen-->
 	<haxedef name="FLX_NO_FOCUS_LOST_SCREEN" />
@@ -166,6 +148,17 @@
 
 	<!--Enable this for Nape release builds for a serious peformance improvement-->
 	<haxedef name="NAPE_RELEASE_BUILD" unless="debug" />
+
+	<!--Allow working memory greater than 1 gigabyte-->
+	<haxedef name="HXCPP_GC_BIG_BLOCKS" if="cpp" />
+
+	<!--Include line information in stack traces, even in release mode-->
+	<haxedef name="HXCPP_STACK_LINE" if="cpp" unless="debug" />
+
+	<!--Add null-pointer checks, even in release mode-->
+	<haxedef name="HXCPP_CHECK_POINTER" if="cpp" unless="debug" />
+
+	<haxedef name="HXC_DEBUG_TRACE" if="debug" />
 
 	<!-- _________________________________ Custom _______________________________ -->
 
