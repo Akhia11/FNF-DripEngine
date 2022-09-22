@@ -4,10 +4,112 @@ import flixel.FlxG;
 import flixel.graphics.frames.FlxAtlasFrames;
 import openfl.utils.AssetType;
 import openfl.utils.Assets as OpenFlAssets;
+#if FUTURE_POLYMOD
+import polymod.Polymod;
+#end
 
 class Paths
 {
 	inline public static var SOUND_EXT = #if web "mp3" #else "ogg" #end;
+
+        public static var currentTrackedAssets:Map<String, FlxGraphic> = [];
+	public static var currentTrackedSounds:Map<String, Sound> = [];
+	public static var localTrackedAssets:Array<String> = [];
+
+	public static function clearUnusedMemory()
+	{
+		for (key in currentTrackedAssets.keys())
+		{
+			if (!localTrackedAssets.contains(key) && key != null)
+			{
+				var obj = currentTrackedAssets.get(key);
+				@:privateAccess
+				if (obj != null)
+				{
+					Assets.cache.removeBitmapData(key);
+					Assets.cache.clearBitmapData(key);
+					Assets.cache.clear(key);
+					FlxG.bitmap._cache.remove(key);
+					obj.destroy();
+					currentTrackedAssets.remove(key);
+				}
+			}
+		}
+
+		#if FUTURE_POLYMOD
+		Polymod.clearCache();
+		#end
+		System.gc();
+	}
+
+	public static function clearStoredMemory()
+	{
+		@:privateAccess
+		for (key in FlxG.bitmap._cache.keys())
+		{
+			var obj = FlxG.bitmap._cache.get(key);
+			if (obj != null && !currentTrackedAssets.exists(key))
+			{
+				Assets.cache.removeBitmapData(key);
+				Assets.cache.clearBitmapData(key);
+				Assets.cache.clear(key);
+				FlxG.bitmap._cache.remove(key);
+				obj.destroy();
+			}
+		}
+
+		for (key in currentTrackedSounds.keys())
+		{
+			if (!localTrackedAssets.contains(key) && key != null)
+			{
+				Assets.cache.removeSound(key);
+				Assets.cache.clearSounds(key);
+				currentTrackedSounds.remove(key);
+			}
+		}
+
+		for (key in Assets.cache.getKeys())
+			if (!localTrackedAssets.contains(key) && key != null)
+				Assets.cache.clear(key);
+
+		localTrackedAssets = [];
+	}
+
+        public static function returnGraphic(key:String, ?cache:Bool = true):FlxGraphic
+	{
+		var path:String = 'assets/$key.png';
+		if (Assets.exists(path, IMAGE))
+		{
+			if (!currentTrackedAssets.exists(path))
+			{
+				var graphic:FlxGraphic = FlxGraphic.fromBitmapData(Assets.getBitmapData(path), false, path, cache);
+				graphic.persist = true;
+				currentTrackedAssets.set(path, graphic);
+			}
+
+			localTrackedAssets.push(path);
+			return currentTrackedAssets.get(path);
+		}
+
+		trace('oh no $key its returning null NOOOO');
+		return null;
+	}
+
+	public static function returnSound(key:String, ?cache:Bool = true):Sound
+	{
+		var path:String = 'assets/$key.ogg';
+		if (Assets.exists(path, SOUND))
+		{
+			if (!currentTrackedSounds.exists(path))
+				currentTrackedSounds.set(path, Assets.getSound(path, cache));
+
+			localTrackedAssets.push(path);
+			return currentTrackedSounds.get(path);
+		}
+
+		trace('oh no $key its returning null NOOOO');
+		return null;
+	}
 
 	static var currentLevel:String;
 
