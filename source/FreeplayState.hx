@@ -37,44 +37,12 @@ class FreeplayState extends MusicBeatState
 	{
 		var initSonglist = CoolUtil.coolTextFile(Paths.txt('freeplaySonglist'));
 
-		// Loops through all songs in freeplaySonglist.txt
 		for (i in 0...initSonglist.length)
 		{
-			if(initSonglist[i].trim() != "")
-			{
-				// Creates an array of their strings
-				var listArray = initSonglist[i].split(":");
-
-				// Variables I like yes mmmm tasty
-				var week = Std.parseInt(listArray[2]);
-				var icon = listArray[1];
-				var song = listArray[0];
-				
-				var diffsStr = listArray[3];
-				var diffs = ["easy", "normal", "hard"];
-
-				var color = listArray[4];
-				var actualColor:Null<FlxColor> = null;
-
-				if(color != null)
-					actualColor = FlxColor.fromString(color);
-
-				if(diffsStr != null)
-					diffs = diffsStr.split(",");
-
-				// Creates new song data accordingly
-				songs.push(new SongMetadata(song, week, icon, diffs, actualColor));
-			}
+			songs.push(new SongMetadata(initSonglist[i], 1, 'gf'));
 		}
-	        //Akhia11: credits to leather engine augh
-                //mcagabe19: when u forget smth add LOLOLOLOL
 
-		#if desktop
-		// Updating Discord Rich Presence
-		DiscordClient.changePresence("In the Menus", null);
-		#end
-
-                /* 
+		/* 
 			if (FlxG.sound.music != null)
 			{
 				if (!FlxG.sound.music.playing)
@@ -82,11 +50,34 @@ class FreeplayState extends MusicBeatState
 			}
 		 */
 
+		#if desktop
+		// Updating Discord Rich Presence
+		DiscordClient.changePresence("In the Menus", null);
+		#end
+
 		var isDebug:Bool = false;
 
 		#if debug
 		isDebug = true;
 		#end
+
+		if (StoryMenuState.weekUnlocked[2] || isDebug)
+			addWeek(['Bopeebo', 'Fresh', 'Dadbattle'], 1, ['dad']);
+
+		if (StoryMenuState.weekUnlocked[2] || isDebug)
+			addWeek(['Spookeez', 'South', 'Monster'], 2, ['spooky']);
+
+		if (StoryMenuState.weekUnlocked[3] || isDebug)
+			addWeek(['Pico', 'Philly', 'Blammed'], 3, ['pico']);
+
+		if (StoryMenuState.weekUnlocked[4] || isDebug)
+			addWeek(['Satin-Panties', 'High', 'Milf'], 4, ['mom']);
+
+		if (StoryMenuState.weekUnlocked[5] || isDebug)
+			addWeek(['Cocoa', 'Eggnog', 'Winter-Horrorland'], 5, ['parents-christmas', 'parents-christmas', 'monster-christmas']);
+
+		if (StoryMenuState.weekUnlocked[6] || isDebug)
+			addWeek(['Senpai', 'Roses', 'Thorns'], 6, ['senpai', 'senpai', 'spirit']);
 
 		// LOAD MUSIC
 
@@ -100,8 +91,8 @@ class FreeplayState extends MusicBeatState
 
 		for (i in 0...songs.length)
 		{
-			var songText:Alphabet = new Alphabet(0, (70 * i) + 30, 
-                        songs[i].songName, true, false);			songText.isMenuItem = true;
+			var songText:Alphabet = new Alphabet(0, (70 * i) + 30, songs[i].songName, true, false);
+			songText.isMenuItem = true;
 			songText.targetY = i;
 			grpSongs.add(songText);
 
