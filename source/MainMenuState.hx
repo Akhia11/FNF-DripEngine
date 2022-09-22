@@ -181,7 +181,7 @@ class MainMenuState extends MusicBeatState
 										FlxG.switchState(new StoryMenuState());
 										trace("Story Menu Selected");
                                                                         case 'mods':
-										FlxG.switchState(new ModsMenuState;
+										FlxG.switchState(new ModsMenuState());
 										trace("Mods Menu Selected");
 									case 'freeplay':
 										FlxG.switchState(new FreeplayState());
