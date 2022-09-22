@@ -1,22 +1,19 @@
-Tutorial:gf:0:Easy,Normal,Hard:#B72863
-Bopeebo:dad:1:Easy,Normal,Hard:#C96ED4
-Fresh:dad:1:Easy,Normal,Hard:#C96ED4
-Dad Battle:dad:1:Easy,Normal,Hard:#C96ED4
-Spookeez:spooky:2:Easy,Normal,Hard:#DD8B13
-South:spooky:2:Easy,Normal,Hard:#DD8B13
-Monster:monster:2:Easy,Normal,Hard:#F5FF6B
-Pico:pico:3:Easy,Normal,Hard:#CAE46C
-Philly Nice:pico:3:Easy,Normal,Hard:#CAE46C
-Blammed:pico:3:Easy,Normal,Hard:#CAE46C
-Satin Panties:mom:4:Easy,Normal,Hard:#E46AA1
-High:mom:4:Easy,Normal,Hard:#E46AA1
-M.I.L.F:mom:4:Easy,Normal,Hard:#E46AA1
-Cocoa:parents-christmas:5:Easy,Normal,Hard:#E46AA1
-Eggnog:parents-christmas:5:Easy,Normal,Hard:#E46AA1
-Winter Horrorland:monster:5:Easy,Normal,Hard:#F5FF6B
-Senpai:senpai:6:Easy,Normal,Hard:#FFAA6F
-Roses:senpai-angry:6:Easy,Normal,Hard:#FFAA6F
-Thorns:spirit:6:Easy,Normal,Hard:#FF3C6E
-Ugh:tankman:7:Easy,Normal,Hard:#F6B604
-Guns:tankman:7:Easy,Normal,Hard:#F6B604
-Stress:tankman:7:Easy,Normal,Hard:#F6B604
+tutorial:gf:0
+bopeebo:dad:1
+fresh:dad:1
+dadbattle:dad:1
+spookeez:spooky:2
+south:spooky:2
+monster:monster:2
+pico:pico:3
+philly:pico:3
+blammed:pico:3
+satin-panties:mom:4
+high:mom:4
+milf:mom:4
+cocoa:parents-christmas:5
+eggnog:parents-christmas:5
+winter-horrorland:monster-christmas:5
+senpai:senpai:6
+roses:senpai:6
+thorns:spirit:6
