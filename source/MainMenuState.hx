@@ -33,6 +33,10 @@ class MainMenuState extends MusicBeatState
 	var optionShit:Array<String> = ['story mode', 'freeplay'];
 	#end
 
+        public static var balls:String = 'best engine';
+
+	public static var balls1:Array<String> = ['nice balls', 'lmfao', 'AAAAAAAAAUYGGGHHHH', 'hell'];
+
 	var magenta:FlxSprite;
 	var camFollow:FlxObject;
 
@@ -52,6 +56,8 @@ class MainMenuState extends MusicBeatState
 		}
 
 		persistentUpdate = persistentDraw = true;
+    
+                balls = balls1[FlxG.random.int(0, 2)];
 
 		var bg:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('menuBG'));
 		bg.scrollFactor.x = 0;
@@ -98,7 +104,7 @@ class MainMenuState extends MusicBeatState
 
 		FlxG.camera.follow(camFollow, null, 0.06);
 
-		var versionShit:FlxText = new FlxText(5, FlxG.height - 18, 0, "v" + Application.current.meta.get('version'), 12);
+		var versionShit:FlxText = new FlxText(5, FlxG.height - 18, 0, "Drip engine v" + Application.current.meta.get('version') + "/" + balls, 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
