@@ -17,7 +17,7 @@ IF YOU MAKE A MOD AND DISTRIBUTE A MODIFIED / RECOMPILED VERSION, YOU MUST OPEN 
 ## Drip Engine Credits
 
 - [Akhia11/ben ok](https://m.youtube.com/channel/UCP6bSvVRWMTQBMXBJGb9SVA) - Creator
-- [mcagabe19](https://m.youtube.com/c/Mcagabe19) - Helper
+- [mcagabe19](https://m.youtube.com/c/Mcagabe19) - Ex-Coder, Helper
 
 This game was made with love to Newgrounds and its community. Extra love to Tom Fulp.
 
