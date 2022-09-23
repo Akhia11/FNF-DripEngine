@@ -17,7 +17,6 @@ typedef SwagSongs =
 {
 	var name:String;
 	var character:String;
-	var colors:Array<Int>;
 }
 
 class Week
