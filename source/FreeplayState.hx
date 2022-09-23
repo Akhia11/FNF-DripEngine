@@ -44,9 +44,9 @@ class FreeplayState extends MusicBeatState
 		{
 			for (song in Week.currentLoadedWeeks.get(Week.weeksList[i]).songs)
 			{
-				songs.push(new SongMetadata(song.name, i, song.character);
+				songs.push(new SongMetadata(song.name, i, song.character)));
 			}
-                      }
+                }
 
 		/* 
 			if (FlxG.sound.music != null)
