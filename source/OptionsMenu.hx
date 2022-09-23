@@ -52,7 +52,7 @@ class OptionsMenu extends MusicBeatState
 		super.create();
 
                 #if android
-		addVirtualPad(UP_DOWN, A_B_C);
+                removeVirtualPad();
 		#end
 
 		openSubState(new OptionsSubState());
@@ -61,15 +61,6 @@ class OptionsMenu extends MusicBeatState
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
-
-                #if android
-                if (virtualPad.buttonC.justPressed)
-                {
-                removeVirtualPad();
-		openSubState(new android.AndroidControlsSubState());
-                }
-                #end
-                //mcagabe19:this from my vs steve source LOL
 
 			if (controls.ACCEPT)
 			{
