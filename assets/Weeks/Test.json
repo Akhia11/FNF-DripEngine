@@ -1,0 +1,17 @@
+{
+	"songs":[
+		{
+			"name": "never gonna give you up",
+			"character": "gf",
+		}
+	],
+	"locked":false,
+	"weekCharacters":[
+		"",
+		"bf",
+		"gf"
+	],
+	"weekName":"",
+	"hideStoryMode":false,
+	"hideFreeplay":false
+}
