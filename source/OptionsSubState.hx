@@ -19,6 +19,10 @@ class OptionsSubState extends MusicBeatSubstate
 	{
 		super();
 
+                #if android
+		addVirtualPad(UP_DOWN, A_B_C);
+		#end
+
 		grpOptionsTexts = new FlxTypedGroup<FlxText>();
 		add(grpOptionsTexts);
 
@@ -36,6 +40,15 @@ class OptionsSubState extends MusicBeatSubstate
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
+
+                #if android
+                if (virtualPad.buttonC.justPressed)
+                {
+                removeVirtualPad();
+		openSubState(new android.AndroidControlsSubState());
+                }
+                #end
+                //mcagabe19:this from my vs steve source LOL
 
 		if (controls.UP_P)
 			curSelected -= 1;
