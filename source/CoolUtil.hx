@@ -2,6 +2,10 @@ package;
 
 import flixel.FlxG;
 import openfl.utils.Assets;
+#if android 
+import sys.io.File;
+import sys.FileSystem;
+#end
 
 using StringTools;
 
