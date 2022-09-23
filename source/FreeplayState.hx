@@ -46,6 +46,7 @@ class FreeplayState extends MusicBeatState
 			{
 				songs.push(new SongMetadata(song.name, i, song.character);
 			}
+                      }
 
 		/* 
 			if (FlxG.sound.music != null)
