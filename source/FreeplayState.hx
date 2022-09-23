@@ -38,12 +38,14 @@ class FreeplayState extends MusicBeatState
                 Paths.clearUnusedMemory();
                 Paths.clearStoredMemory();
 
-		var initSonglist = CoolUtil.coolTextFile(Paths.txt('freeplaySonglist'));
+		Week.loadJsons(false);
 
-		for (i in 0...initSonglist.length)
+		for (i in 0...Week.weeksList.length)
 		{
-			songs.push(new SongMetadata(initSonglist[i], 1, 'gf'));
-		}
+			for (song in Week.currentLoadedWeeks.get(Week.weeksList[i]).songs)
+			{
+				songs.push(new SongMetadata(song.name, i, song.character);
+			}
 
 		/* 
 			if (FlxG.sound.music != null)
