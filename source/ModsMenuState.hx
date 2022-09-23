@@ -1,4 +1,4 @@
-package;
+package states;
 
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -23,11 +23,6 @@ class ModsMenuState extends MusicBeatState
 
 		Paths.clearStoredMemory();
 		Paths.clearUnusedMemory();
-
-		#if windows
-		// Updating Discord Rich Presence
-		DiscordClient.changePresence("In the Menus", null);
-		#end
 
 		if (FlxG.sound.music != null && !FlxG.sound.music.playing)
 			FlxG.sound.playMusic(Paths.music('freakyMenu'));
@@ -68,9 +63,9 @@ class ModsMenuState extends MusicBeatState
 		if (FlxG.sound.music.volume < 0.7)
 			FlxG.sound.music.volume += 0.5 * elapsed;
 
-		if (controls.UP_P)
+		if (controls.UI_UP_P)
 			changeSelection(-1);
-		else if (controls.DOWN_P)
+		else if (controls.UI_DOWN_P)
 			changeSelection(1);
 		else if (FlxG.mouse.wheel != 0)
 			changeSelection(-FlxG.mouse.wheel);
@@ -88,7 +83,6 @@ class ModsMenuState extends MusicBeatState
 			{
 				FlxG.save.data.disabledMods.push(ModCore.trackedMods[curSelected].id);
 				FlxG.save.flush();
-				FlxG.sound.play(Paths.sound('cancelMenu'));
 				changeSelection();
 				changedSomething = !changedSomething;
 			}
@@ -96,7 +90,6 @@ class ModsMenuState extends MusicBeatState
 			{
 				FlxG.save.data.disabledMods.remove(ModCore.trackedMods[curSelected].id);
 				FlxG.save.flush();
-				FlxG.sound.play(Paths.sound('confirmMenu'));
 				changeSelection();
 				changedSomething = !changedSomething;
 			}
@@ -118,9 +111,9 @@ class ModsMenuState extends MusicBeatState
 
 		var bullShit:Int = 0;
 
-		if (FlxG.save.data.disabledMods.contains(ModCore.trackedMods[curSelected].id))
-			iconArray[curSelected].alpha = 0.6;
-		else
+		iconArray[curSelected].alpha = 0.6;
+
+		if (!FlxG.save.data.disabledMods.contains(ModCore.trackedMods[curSelected].id))
 			iconArray[curSelected].alpha = 1;
 
 		for (item in daMods.members)
@@ -128,9 +121,9 @@ class ModsMenuState extends MusicBeatState
 			item.targetY = bullShit - curSelected;
 			bullShit++;
 
-			if (FlxG.save.data.disabledMods.contains(ModCore.trackedMods[curSelected].id))
-				item.alpha = 0.6;
-			else
+			item.alpha = 0.6;
+
+			if (!FlxG.save.data.disabledMods.contains(ModCore.trackedMods[curSelected].id))
 				item.alpha = 1;
 		}
 	}
@@ -138,8 +131,6 @@ class ModsMenuState extends MusicBeatState
 
 class ModIcon extends FlxSprite
 {
-	public var offsetX:Float = 0;
-	public var offsetY:Float = 0;
 	public var sprTracker:FlxSprite;
 
 	public function new(bytes:Bytes)
@@ -157,6 +148,6 @@ class ModIcon extends FlxSprite
 		super.update(elapsed);
 
 		if (sprTracker != null)
-			setPosition(sprTracker.x + sprTracker.width + 10, sprTracker.y - 25);
+			setPosition(sprTracker.x + sprTracker.width + 10, sprTracker.y);
 	}
 }
