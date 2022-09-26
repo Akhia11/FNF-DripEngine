@@ -75,7 +75,7 @@ class ModsMenuState extends MusicBeatState
 			FlxG.sound.play(Paths.sound('cancelMenu'));
 			if (changedSomething)
 				ModCore.reload();
-			MusicBeatState.switchState(new MainMenuState());
+			FlxG.switchState(new MainMenuState());
 		}
 		else if (controls.ACCEPT)
 		{
